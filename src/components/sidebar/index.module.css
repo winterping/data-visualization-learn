@@ -1,0 +1,8 @@
+.sidebar {
+  width: 150px;
+  height: 100%;
+  overflow-y: auto;
+}
+.main{
+    height: 100%;
+}

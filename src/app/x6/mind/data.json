@@ -1,0 +1,234 @@
+{
+    "cells": [
+        {
+            "shape": "mindmap-edge",
+            "connector": {
+                "name": "mindmap"
+            },
+            "zIndex": 0,
+            "id": "b7661cc8-920e-4865-a99c-4cedc7bc6de9",
+            "source": {
+                "cell": "center",
+                "anchor": {
+                    "name": "left",
+                    "args": {}
+                }
+            },
+            "target": {
+                "cell": "1-1",
+                "anchor": {
+                    "name": "right"
+                }
+            }
+        },
+        {
+            "shape": "mindmap-edge",
+            "connector": {
+                "name": "mindmap"
+            },
+            "zIndex": 0,
+            "id": "adb66ea2-d714-42dc-a8f7-a5edd37626c7",
+            "source": {
+                "cell": "center",
+                "anchor": {
+                    "name": "right",
+                    "args": {
+                        "dx": -16
+                    }
+                }
+            },
+            "target": {
+                "cell": "1-2",
+                "anchor": {
+                    "name": "left"
+                }
+            }
+        },
+        {
+            "shape": "mindmap-edge",
+            "connector": {
+                "name": "mindmap"
+            },
+            "zIndex": 0,
+            "id": "7c2550a7-9884-4c44-8fbe-197f75920283",
+            "source": {
+                "cell": "center",
+                "anchor": {
+                    "name": "right",
+                    "args": {
+                        "dx": -16
+                    }
+                }
+            },
+            "target": {
+                "cell": "new-1721440464435",
+                "anchor": {
+                    "name": "left"
+                }
+            }
+        },
+        {
+            "position": {
+                "x": -160,
+                "y": -65
+            },
+            "size": {
+                "width": 160,
+                "height": 50
+            },
+            "attrs": {
+                "text": {
+                    "text": "中心主题"
+                }
+            },
+            "visible": true,
+            "shape": "topic",
+            "tools": {
+                "items": [
+                    {
+                        "name": "node-editor",
+                        "args": {
+                            "attrs": {
+                                "backgroundColor": "#EFF4FF"
+                            }
+                        }
+                    }
+                ]
+            },
+            "id": "center",
+            "type": "topic",
+            "children": [
+                {
+                    "id": "1-1",
+                    "type": "topic-child",
+                    "label": "分支主题1",
+                    "width": 100,
+                    "height": 40,
+                    "direction": "left"
+                },
+                {
+                    "id": "1-2",
+                    "type": "topic-child",
+                    "label": "分支主题2",
+                    "width": 100,
+                    "height": 40,
+                    "direction": "right"
+                }
+            ],
+            "zIndex": 1
+        },
+        {
+            "position": {
+                "x": -340,
+                "y": -60
+            },
+            "size": {
+                "width": 100,
+                "height": 40
+            },
+            "attrs": {
+                "text": {
+                    "text": "分支主题1"
+                },
+                "img": {
+                    "event": "add:topic:left",
+                    "refX": "0%",
+                    "refX2": -18
+                }
+            },
+            "visible": true,
+            "shape": "topic-child",
+            "tools": {
+                "items": [
+                    {
+                        "name": "node-editor",
+                        "args": {
+                            "attrs": {
+                                "backgroundColor": "#EFF4FF"
+                            }
+                        }
+                    }
+                ]
+            },
+            "id": "1-1",
+            "type": "topic-child",
+            "direction": "left",
+            "zIndex": 2
+        },
+        {
+            "position": {
+                "x": 80,
+                "y": -60
+            },
+            "size": {
+                "width": 100,
+                "height": 40
+            },
+            "attrs": {
+                "text": {
+                    "text": "分支主题2"
+                },
+                "img": {
+                    "refX": "100%",
+                    "refX2": 0
+                }
+            },
+            "visible": true,
+            "shape": "topic-child",
+            "tools": {
+                "items": [
+                    {
+                        "name": "node-editor",
+                        "args": {
+                            "attrs": {
+                                "backgroundColor": "#EFF4FF"
+                            }
+                        }
+                    }
+                ]
+            },
+            "id": "1-2",
+            "type": "topic-child",
+            "direction": "right",
+            "zIndex": 3
+        },
+        {
+            "position": {
+                "x": 80,
+                "y": 0
+            },
+            "size": {
+                "width": 100,
+                "height": 40
+            },
+            "attrs": {
+                "text": {
+                    "text": "输入文本"
+                },
+                "img": {
+                    "refX": "100%",
+                    "refX2": 0
+                }
+            },
+            "visible": true,
+            "shape": "topic-child",
+            "tools": {
+                "items": [
+                    {
+                        "name": "node-editor",
+                        "args": {
+                            "attrs": {
+                                "backgroundColor": "#EFF4FF"
+                            }
+                        }
+                    }
+                ]
+            },
+            "id": "new-1721440464435",
+            "children": [],
+            "type": "topic-child",
+            "direction": "right",
+            "zIndex": 4
+        }
+    ]
+}
