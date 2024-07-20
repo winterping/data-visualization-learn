@@ -235,12 +235,14 @@ export default function Mind() {
     graph.current = new Graph({
       container: refContainer.current,
       connecting: {
+        //通过配置 connecting 可以实现丰富的连线交互。
         connectionPoint: "anchor",
       },
       mousewheel: {
+        //设置画布是否缩放
         enabled: true,
       },
-      panning: true,
+      panning: true, //设置画布是否可以平移
     });
     graph.current.use(new Selection());
     graph.current.use(new Keyboard());
@@ -267,6 +269,7 @@ export default function Mind() {
       setResizingEnabled(true);
     });
 
+    //自定义节点的时候给添加图标设置了event事件名称，这边进通过名称进行关联
     graph.current.on("add:topic:left", (event) => {
       addNewNode(event, "left");
     });
@@ -275,6 +278,7 @@ export default function Mind() {
       addNewNode(event, "right");
     });
 
+    //绑定删除键的监听事件
     graph.current.bindKey(["backspace", "delete"], () => {
       const selectedNodes = graph.current
         .getSelectedCells()
@@ -313,9 +317,8 @@ export default function Mind() {
         return;
       }
 
-      const edges = graph.current.getConnectedEdges(currentNode, {
-        outbound: true,
-      });
+      //getConnectedEdges方法获取与节点/边相连接的边。
+      const edges = graph.current.getConnectedEdges(currentNode,{});
       edges.forEach((edge) => {
         const target = edge.getTargetCell();
         if (target && !descendants.has(target.id)) {
@@ -333,13 +336,18 @@ export default function Mind() {
   //添加新节点
   const addNewNode = (event, direction) => {
     // console.log("addd", event.node);
-    event.e.stopPropagation();
+    event.e.stopPropagation(); //阻止事件冒泡防止添加的时候出现节点的拉伸功能
     setResizingEnabled(false);
     const cur_node = event.node;
     const cur_node_pos = cur_node.position();
     const { id } = cur_node;
     const nodes = graph.current.getNodes(); //返回画布中所有节点和边的数量
     const edges = graph.current.getEdges(); //返回画布中所有节点。
+
+    /**
+     * 因为要在原有的基础上添加新的节点，左右两边添加节点的位置不一样，目前想到的方式是获取所有的子节点，
+     * 判断是往哪个方向添加节点，先找到最远的那个子节点位置，然后在最远的那个下边添加新的节点。
+     */
     const childNodes = edges
       .filter((edge) => edge.getSourceCellId() === id)
       .map((edge) => edge.getTargetCell());
@@ -349,8 +357,6 @@ export default function Mind() {
       const { x, y } = node.position();
       // console.log("x, y ", x, y);
       if (direction === "left" && x < 0) {
-        console.log("x", x);
-        console.log("p_x", p_x);
         p_x = Math.min(p_x, x);
         p_y = Math.max(p_y, y);
       } else if (direction === "right" && x > 0) {
@@ -435,6 +441,7 @@ export default function Mind() {
         return 20;
       },
       getSide: (e) => {
+        //  子节点在父节点的左边还是右边
         return e.data.direction || "right";
       },
     });
@@ -463,7 +470,7 @@ export default function Mind() {
     };
 
     traverse(result);
-    graph.current.resetCells(cells);
+    graph.current.resetCells(cells); //resetCells方法用于清空画布并添加用指定的节点/边。
     graph.current.centerContent(); // 将画布中元素居中展示
   };
 
@@ -477,11 +484,13 @@ export default function Mind() {
     graph.current.redo();
   };
 
+  //导出
   const onExport = () => {
     const data = graph.current.toJSON();
     console.log("data", data);
   };
 
+  //导入
   const onImport = () => {
     graph.current.clearCells();
     graph.current.fromJSON(test_data);
